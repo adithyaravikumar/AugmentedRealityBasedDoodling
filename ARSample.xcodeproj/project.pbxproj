@@ -31,11 +31,6 @@
 		579F4D5618552C3A007A92AF /* GEOLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4D5118552C3A007A92AF /* GEOLocations.m */; };
 		579F4D5918553325007A92AF /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579F4D5718553325007A92AF /* GLKit.framework */; };
 		579F4D5A18553325007A92AF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579F4D5818553325007A92AF /* OpenGLES.framework */; };
-		579F4D6118553391007A92AF /* Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 579F4D5C18553391007A92AF /* Blue.png */; };
-		579F4D6218553391007A92AF /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 579F4D5D18553391007A92AF /* Green.png */; };
-		579F4D6318553391007A92AF /* Purple.png in Resources */ = {isa = PBXBuildFile; fileRef = 579F4D5E18553391007A92AF /* Purple.png */; };
-		579F4D6418553391007A92AF /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = 579F4D5F18553391007A92AF /* Red.png */; };
-		579F4D6518553391007A92AF /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 579F4D6018553391007A92AF /* Yellow.png */; };
 		579F4D711855343D007A92AF /* fileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4D6C1855343D007A92AF /* fileUtil.m */; };
 		579F4D721855343D007A92AF /* shaderUtil.c in Sources */ = {isa = PBXBuildFile; fileRef = 579F4D6D1855343D007A92AF /* shaderUtil.c */; };
 		579F4D7318553469007A92AF /* point.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 579F4D671855343D007A92AF /* point.fsh */; };
@@ -94,11 +89,6 @@
 		579F4D5118552C3A007A92AF /* GEOLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEOLocations.m; sourceTree = "<group>"; };
 		579F4D5718553325007A92AF /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		579F4D5818553325007A92AF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		579F4D5C18553391007A92AF /* Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue.png; sourceTree = "<group>"; };
-		579F4D5D18553391007A92AF /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
-		579F4D5E18553391007A92AF /* Purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Purple.png; sourceTree = "<group>"; };
-		579F4D5F18553391007A92AF /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Red.png; sourceTree = "<group>"; };
-		579F4D6018553391007A92AF /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yellow.png; sourceTree = "<group>"; };
 		579F4D671855343D007A92AF /* point.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = point.fsh; sourceTree = "<group>"; };
 		579F4D681855343D007A92AF /* point.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = point.vsh; sourceTree = "<group>"; };
 		579F4D6A1855343D007A92AF /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
@@ -256,11 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				579F4D7818553758007A92AF /* Particle.png */,
-				579F4D5C18553391007A92AF /* Blue.png */,
-				579F4D5D18553391007A92AF /* Green.png */,
-				579F4D5E18553391007A92AF /* Purple.png */,
-				579F4D5F18553391007A92AF /* Red.png */,
-				579F4D6018553391007A92AF /* Yellow.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -365,11 +350,6 @@
 			files = (
 				579F4D7318553469007A92AF /* point.fsh in Resources */,
 				579F4D7418553469007A92AF /* point.vsh in Resources */,
-				579F4D6118553391007A92AF /* Blue.png in Resources */,
-				579F4D6318553391007A92AF /* Purple.png in Resources */,
-				579F4D6218553391007A92AF /* Green.png in Resources */,
-				579F4D6518553391007A92AF /* Yellow.png in Resources */,
-				579F4D6418553391007A92AF /* Red.png in Resources */,
 				579F4D1D18545218007A92AF /* Images.xcassets in Resources */,
 				579F4D0F18545218007A92AF /* InfoPlist.strings in Resources */,
 				579F4D7918553758007A92AF /* Particle.png in Resources */,
