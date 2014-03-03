@@ -62,11 +62,11 @@
     // Create a segmented control so that the user can choose the brush color.
 	UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:
 											[NSArray arrayWithObjects:
-                                             [UIImage imageNamed:@"Red.png"],
-                                             [UIImage imageNamed:@"Yellow.png"],
-                                             [UIImage imageNamed:@"Green.png"],
-                                             [UIImage imageNamed:@"Blue.png"],
-                                             [UIImage imageNamed:@"Purple.png"],
+                                             [UIImage imageNamed:@"Red"],
+                                             [UIImage imageNamed:@"Yellow"],
+                                             [UIImage imageNamed:@"Green"],
+                                             [UIImage imageNamed:@"Blue"],
+                                             [UIImage imageNamed:@"Purple"],
                                              nil]];
     // Compute a rectangle that is positioned correctly for the segmented control you'll use as a brush color palette
     CGRect rect = [[UIScreen mainScreen] bounds];
