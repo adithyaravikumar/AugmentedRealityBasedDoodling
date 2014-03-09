@@ -12,5 +12,6 @@
 
 - (void)erase;
 - (void)setBrushColorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
+- (void)renderLineFromPoint:(CGPoint)start toPoint:(CGPoint)end;
 
 @end

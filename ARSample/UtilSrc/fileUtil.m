@@ -65,8 +65,8 @@ char *readFile(const char *name)
 		return 0;
 	
 	stat(name, &statbuf);
-	source = (char *) malloc(statbuf.st_size + 1);
-	fread(source, statbuf.st_size, 1, fh);
+	source = (char *) malloc((unsigned long)statbuf.st_size + 1);
+	fread(source, (unsigned long)statbuf.st_size, 1, fh);
 	source[statbuf.st_size] = '\0';
 	fclose(fh);
 	
