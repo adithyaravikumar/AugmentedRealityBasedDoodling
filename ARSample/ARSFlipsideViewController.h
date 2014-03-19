@@ -1,7 +1,4 @@
-#import <UIKit/UIKit.h>
-
 #import <MapKit/MapKit.h>
-
 #import "ARKit.h"
 
 @class ARSFlipsideViewController;

@@ -40,9 +40,15 @@
 		579F4D8118554C98007A92AF /* ARSFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4D7E18554C98007A92AF /* ARSFlipsideViewController.m */; };
 		579F4D8218554C98007A92AF /* MarkerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 579F4D8018554C98007A92AF /* MarkerView.m */; };
 		57C1232818C686DC00D2A4B5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C1232718C686DC00D2A4B5 /* CoreMotion.framework */; };
-		57C1232D18CBCEEF00D2A4B5 /* ColorMenuConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1232A18CBCEEF00D2A4B5 /* ColorMenuConstants.m */; };
+		57C1232D18CBCEEF00D2A4B5 /* ARSColorMenuConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1232A18CBCEEF00D2A4B5 /* ARSColorMenuConstants.m */; };
 		57C1232E18CBCEEF00D2A4B5 /* ARSColorMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1232C18CBCEEF00D2A4B5 /* ARSColorMenuView.m */; };
 		57C1233118CBD16A00D2A4B5 /* UIColor+HexAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1233018CBD16A00D2A4B5 /* UIColor+HexAdditions.m */; };
+		57C1233318CCEC7C00D2A4B5 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C1233218CCEC7C00D2A4B5 /* block.png */; };
+		57C1233518CCEEBC00D2A4B5 /* disc.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C1233418CCEEBC00D2A4B5 /* disc.png */; };
+		57C1233918CCF26A00D2A4B5 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C1233818CCF26A00D2A4B5 /* star.png */; };
+		57C1233E18CD146400D2A4B5 /* ARSDefaultMenuConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1233D18CD146400D2A4B5 /* ARSDefaultMenuConstants.m */; };
+		57C1234118CD1BC300D2A4B5 /* ARSDefaultMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1234018CD1BC300D2A4B5 /* ARSDefaultMenuView.m */; };
+		57C1234418CD4D4B00D2A4B5 /* ARSBrushMenuConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C1234318CD4D4B00D2A4B5 /* ARSBrushMenuConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,12 +114,21 @@
 		579F4D7F18554C98007A92AF /* MarkerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkerView.h; sourceTree = "<group>"; };
 		579F4D8018554C98007A92AF /* MarkerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkerView.m; sourceTree = "<group>"; };
 		57C1232718C686DC00D2A4B5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		57C1232918CBCEEF00D2A4B5 /* ColorMenuConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ColorMenuConstants.h; path = ../ColorMenuConstants.h; sourceTree = "<group>"; };
-		57C1232A18CBCEEF00D2A4B5 /* ColorMenuConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ColorMenuConstants.m; path = ../ColorMenuConstants.m; sourceTree = "<group>"; };
+		57C1232918CBCEEF00D2A4B5 /* ARSColorMenuConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARSColorMenuConstants.h; path = ../ARSColorMenuConstants.h; sourceTree = "<group>"; };
+		57C1232A18CBCEEF00D2A4B5 /* ARSColorMenuConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARSColorMenuConstants.m; path = ../ARSColorMenuConstants.m; sourceTree = "<group>"; };
 		57C1232B18CBCEEF00D2A4B5 /* ARSColorMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSColorMenuView.h; sourceTree = "<group>"; };
 		57C1232C18CBCEEF00D2A4B5 /* ARSColorMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARSColorMenuView.m; sourceTree = "<group>"; };
 		57C1232F18CBD16A00D2A4B5 /* UIColor+HexAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexAdditions.h"; sourceTree = "<group>"; };
 		57C1233018CBD16A00D2A4B5 /* UIColor+HexAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexAdditions.m"; sourceTree = "<group>"; };
+		57C1233218CCEC7C00D2A4B5 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
+		57C1233418CCEEBC00D2A4B5 /* disc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disc.png; sourceTree = "<group>"; };
+		57C1233818CCF26A00D2A4B5 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		57C1233C18CD146400D2A4B5 /* ARSDefaultMenuConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSDefaultMenuConstants.h; sourceTree = "<group>"; };
+		57C1233D18CD146400D2A4B5 /* ARSDefaultMenuConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARSDefaultMenuConstants.m; sourceTree = "<group>"; };
+		57C1233F18CD1BC300D2A4B5 /* ARSDefaultMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSDefaultMenuView.h; sourceTree = "<group>"; };
+		57C1234018CD1BC300D2A4B5 /* ARSDefaultMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARSDefaultMenuView.m; sourceTree = "<group>"; };
+		57C1234218CD4D4B00D2A4B5 /* ARSBrushMenuConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSBrushMenuConstants.h; sourceTree = "<group>"; };
+		57C1234318CD4D4B00D2A4B5 /* ARSBrushMenuConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARSBrushMenuConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +216,8 @@
 				579F4D4318551A1E007A92AF /* ARSVideoView.m */,
 				579F4D7518553539007A92AF /* ARSPaintingView.h */,
 				579F4D7618553539007A92AF /* ARSPaintingView.m */,
+				57C1233F18CD1BC300D2A4B5 /* ARSDefaultMenuView.h */,
+				57C1234018CD1BC300D2A4B5 /* ARSDefaultMenuView.m */,
 				57C1232B18CBCEEF00D2A4B5 /* ARSColorMenuView.h */,
 				57C1232C18CBCEEF00D2A4B5 /* ARSColorMenuView.m */,
 				579F4D1C18545218007A92AF /* Images.xcassets */,
@@ -260,6 +277,9 @@
 		579F4D5B18553391007A92AF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				57C1233818CCF26A00D2A4B5 /* star.png */,
+				57C1233418CCEEBC00D2A4B5 /* disc.png */,
+				57C1233218CCEC7C00D2A4B5 /* block.png */,
 				579F4D7818553758007A92AF /* Particle.png */,
 			);
 			path = Images;
@@ -277,8 +297,12 @@
 		579F4D691855343D007A92AF /* UtilSrc */ = {
 			isa = PBXGroup;
 			children = (
-				57C1232918CBCEEF00D2A4B5 /* ColorMenuConstants.h */,
-				57C1232A18CBCEEF00D2A4B5 /* ColorMenuConstants.m */,
+				57C1232918CBCEEF00D2A4B5 /* ARSColorMenuConstants.h */,
+				57C1232A18CBCEEF00D2A4B5 /* ARSColorMenuConstants.m */,
+				57C1233C18CD146400D2A4B5 /* ARSDefaultMenuConstants.h */,
+				57C1233D18CD146400D2A4B5 /* ARSDefaultMenuConstants.m */,
+				57C1234218CD4D4B00D2A4B5 /* ARSBrushMenuConstants.h */,
+				57C1234318CD4D4B00D2A4B5 /* ARSBrushMenuConstants.m */,
 				57C1232F18CBD16A00D2A4B5 /* UIColor+HexAdditions.h */,
 				57C1233018CBD16A00D2A4B5 /* UIColor+HexAdditions.m */,
 				579F4D6A1855343D007A92AF /* debug.h */,
@@ -372,6 +396,9 @@
 				579F4D1D18545218007A92AF /* Images.xcassets in Resources */,
 				579F4D0F18545218007A92AF /* InfoPlist.strings in Resources */,
 				579F4D7918553758007A92AF /* Particle.png in Resources */,
+				57C1233918CCF26A00D2A4B5 /* star.png in Resources */,
+				57C1233318CCEC7C00D2A4B5 /* block.png in Resources */,
+				57C1233518CCEEBC00D2A4B5 /* disc.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,13 +419,16 @@
 			files = (
 				579F4D721855343D007A92AF /* shaderUtil.c in Sources */,
 				579F4D5318552C3A007A92AF /* ARGeoCoordinate.m in Sources */,
-				57C1232D18CBCEEF00D2A4B5 /* ColorMenuConstants.m in Sources */,
+				57C1232D18CBCEEF00D2A4B5 /* ARSColorMenuConstants.m in Sources */,
+				57C1234118CD1BC300D2A4B5 /* ARSDefaultMenuView.m in Sources */,
 				579F4D7718553539007A92AF /* ARSPaintingView.m in Sources */,
 				579F4D711855343D007A92AF /* fileUtil.m in Sources */,
 				57C1232E18CBCEEF00D2A4B5 /* ARSColorMenuView.m in Sources */,
 				579F4D1118545218007A92AF /* main.m in Sources */,
 				579F4D4418551A1E007A92AF /* ARSVideoView.m in Sources */,
 				579F4D5218552C3A007A92AF /* ARCoordinate.m in Sources */,
+				57C1234418CD4D4B00D2A4B5 /* ARSBrushMenuConstants.m in Sources */,
+				57C1233E18CD146400D2A4B5 /* ARSDefaultMenuConstants.m in Sources */,
 				579F4D1B18545218007A92AF /* ARSViewController.m in Sources */,
 				579F4D5418552C3A007A92AF /* ARKit.m in Sources */,
 				579F4D5618552C3A007A92AF /* GEOLocations.m in Sources */,

@@ -4,7 +4,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "UIColor+HexAdditions.h"
-#import "ColorMenuConstants.h"
+#import "ARSColorMenuConstants.h"
 #import "ARSColorMenuView.h"
 
 //Class Extension for forward declaration of methods
@@ -35,6 +35,7 @@
 @property (nonatomic, strong, readwrite) UIButton *purpleBrushButton;
 @property (nonatomic, strong, readwrite) UIButton *yellowBrushButton;
 @property (nonatomic, strong, readwrite) UIButton *blueBrushButton;
+@property (nonatomic, strong, readwrite) UIButton *backButton;
 
 //Constraints for Color Border Selection view
 @property (nonatomic, strong, readwrite) NSLayoutConstraint *colorSelectionBorderViewWidthConstraint;
@@ -44,9 +45,10 @@
 
 @implementation ARSColorMenuView
 
-- (UIView *)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
+    
     if (self) {
         // Initialization code
         [self _pStandardInitialization];
@@ -57,7 +59,7 @@
 #pragma mark - Menu Items Specific Methods
 
 - (void) _pStandardInitialization {
-    [self setBackgroundColor:[UIColor colorWithHexValue:ColorMenuViewBackgroundColor]];
+    [self setBackgroundColor:[UIColor colorWithHexValue:ColorMenuViewBackgroundColor alpha:0.7f]];
     [self _pInitializeMenuItems];
 }
 
@@ -69,6 +71,7 @@
     self.purpleBrushButton = [[UIButton alloc] init];
     self.yellowBrushButton = [[UIButton alloc] init];
     self.blueBrushButton = [[UIButton alloc] init];
+    self.backButton = [[UIButton alloc] init];
     
     //Add the items to the view
     [self _pAddMenuItemsToView];
@@ -94,6 +97,9 @@
     //BLUE BUTTON
     [self.blueBrushButton setBackgroundImage:[UIImage imageNamed:FingerBlueUpImageName] forState:UIControlStateNormal];
     
+    //BACK BUTTON
+    [self.backButton setBackgroundImage:[UIImage imageNamed:BackButtonImageName] forState:UIControlStateNormal];
+    
 }
 
 - (void) layoutMenuButtons
@@ -103,6 +109,11 @@
     
     //Setup Background Images for the buttons
     [self _pSetBackgroundImagesForMenuItems];
+}
+
+- (void)removeLayout
+{
+    [self removeConstraints:self.constraints];
 }
 
 - (void) _pSetupLayoutAttributesForColorMenuView
@@ -123,6 +134,9 @@
     
     [self _pSetupLayoutConstraintsForMenuItem:self.blueBrushButton
                             withHorizontalConstant:BlueButtonWidthValue];
+    
+    [self _pSetupLayoutConstraintsForMenuItem:self.backButton
+                       withHorizontalConstant:BackButtonWidthValue];
 }
 
 - (void) _pSetupLayoutConstraintsForMenuItem:(UIView *) menuItem withHorizontalConstant:(CGFloat) horizontalConstant
@@ -178,6 +192,7 @@
     [self addSubview:self.purpleBrushButton];
     [self addSubview:self.yellowBrushButton];
     [self addSubview:self.blueBrushButton];
+    [self addSubview:self.backButton];
     [self addSubview:self.colorSelectionBorderView];
 }
 

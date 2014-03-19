@@ -11,22 +11,10 @@
 #import "UIColor+HexAdditions.h"
 #import "ARSViewController.h"
 #import "ARSColorMenuView.h"
+#import "ARSDefaultMenuView.h"
 #import "ARSVideoView.h"
 #import "ARSPaintingView.h"
 #import "ARSFlipsideViewController.h"
-
-#define kUpdateFrequency	60.0
-#define kBrightness             1.0
-#define kSaturation             0.45
-
-#define kPaletteHeight			30
-#define kPaletteSize			5
-#define kMinEraseInterval		0.5
-
-// Padding for margins
-#define kLeftMargin				10.0
-#define kTopMargin				10.0
-#define kRightMargin			10.0
 
 //Constant strings for the hexcode values of brush colors
 NSUInteger const TBNOrangeBrushColor = 0xea5e35;
@@ -40,6 +28,7 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
 @property (nonatomic, strong) ARSPaintingView *arsPaintingview;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) ARSColorMenuView *arsColorMenuView;
+@property (nonatomic, strong) ARSDefaultMenuView *arsDefaultMenuView;
 @end
 
 @implementation ARSViewController
@@ -50,29 +39,29 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
     return self;
 }
 
-- (void) loadView
-{
-    [super loadView];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.arsVideoView = [[ARSVideoView alloc] initWithFrame:self.view.frame];
     self.arsPaintingview = [[ARSPaintingView alloc] initWithFrame:self.view.frame];
-    self.arsColorMenuView = [[ARSColorMenuView alloc] init];
+    self.arsColorMenuView = [[ARSColorMenuView alloc] initWithFrame:CGRectMake(0, 410, self.view.frame.size.width, self.view.frame.size.height * 0.15)];
+    self.arsDefaultMenuView = [[ARSDefaultMenuView alloc] initWithFrame:CGRectMake(0, 410, self.view.frame.size.width, self.view.frame.size.height * 0.15)];
     
     //Set the orange brush as selected by default when entering the screen and set brush color to orange
-    [self _pAddEventHandlersToReaderMenuButtons];
+    [self _pAddEventHandlersToButtons];
     [self.arsColorMenuView.orangeBrushButton setSelected:YES];
     [self _pUpdateBrushColor:TBNOrangeBrushColor];
     
+    [self.arsPaintingview setBackgroundColor:[UIColor clearColor]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self.view addSubview:self.arsVideoView];
     [self.view addSubview:self.arsPaintingview];
-    [self.view addSubview:self.arsColorMenuView];
-    [self.arsPaintingview setBackgroundColor:[UIColor clearColor]];
-    [self _pLayoutReadermenuView];
-    [self loadButtons];
+    [self.view addSubview:self.arsDefaultMenuView];
+    [self _pLayoutDefaultMenuView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,15 +70,19 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)_pAddEventHandlersToReaderMenuButtons {
+- (void)_pAddEventHandlersToButtons {
     [self.arsColorMenuView.orangeBrushButton addTarget:self action:@selector(_pOrangeBrushButtonTouched:)forControlEvents:UIControlEventTouchUpInside];
     [self.arsColorMenuView.greenBrushButton addTarget:self action:@selector(_pGreenBrushButtonTouched:)forControlEvents:UIControlEventTouchUpInside];
     [self.arsColorMenuView.purpleBrushButton addTarget:self action:@selector(_pPurpleBrushButtonTouched:)forControlEvents:UIControlEventTouchUpInside];
     [self.arsColorMenuView.yellowBrushButton addTarget:self action:@selector(_pYellowBrushButtonTouched:)forControlEvents:UIControlEventTouchUpInside];
     [self.arsColorMenuView.blueBrushButton addTarget:self action:@selector(_pBlueBrushButtonTouched:)forControlEvents:UIControlEventTouchUpInside];
+    [self.arsColorMenuView.backButton addTarget:self action:@selector(_pBackButtonTouched:)forControlEvents:UIControlEventTouchUpInside];
+    [self.arsDefaultMenuView.paintBucketButton addTarget:self action:@selector(_pPaintBucketButtonTouched:)forControlEvents:UIControlEventTouchUpInside];
+    [self.arsDefaultMenuView.eraseButton addTarget:self action:@selector(_pEraseButtonTouched:)forControlEvents:UIControlEventTouchUpInside];
+    [self.arsDefaultMenuView.shareButton addTarget:self action:@selector(_pShareButtonTouched:)forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)_pLayoutReadermenuView {
+- (void)_pLayoutColorMenuView {
     [self.arsColorMenuView setTranslatesAutoresizingMaskIntoConstraints:NO];
     
     //Left Edge Constraint
@@ -136,17 +129,51 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
     [self.arsColorMenuView layoutMenuButtons];
 }
 
-- (void) loadButtons
-{
-    UIButton *clearButton = [[UIButton alloc] initWithFrame:CGRectMake(1, 1, 100, 50)];
-    [clearButton setTitle:@"Clear" forState:UIControlStateNormal];
-    [clearButton addTarget:self action:@selector(eraseView) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:clearButton];
+- (void)_pLayoutDefaultMenuView {
+//    [self.arsDefaultMenuView setTranslatesAutoresizingMaskIntoConstraints:NO];
+//    
+//    //Left Edge Constraint
+//    [self.view addConstraint:[NSLayoutConstraint
+//                              constraintWithItem:self.arsDefaultMenuView
+//                              attribute:NSLayoutAttributeLeft
+//                              relatedBy:NSLayoutRelationEqual
+//                              toItem:self.view
+//                              attribute:NSLayoutAttributeLeft
+//                              multiplier:1.0f
+//                              constant:0.0f]];
+//    
+//    //Bottom Edge Constraint
+//    [self.view addConstraint:[NSLayoutConstraint
+//                              constraintWithItem:self.arsDefaultMenuView
+//                              attribute:NSLayoutAttributeBottom
+//                              relatedBy:NSLayoutRelationEqual
+//                              toItem:self.view
+//                              attribute:NSLayoutAttributeBottom
+//                              multiplier:1.0f
+//                              constant:0.0f]];
+//    
+//    //Right Edge Constraint
+//    [self.view addConstraint:[NSLayoutConstraint
+//                              constraintWithItem:self.arsDefaultMenuView
+//                              attribute:NSLayoutAttributeRight
+//                              relatedBy:NSLayoutRelationEqual
+//                              toItem:self.view
+//                              attribute:NSLayoutAttributeRight
+//                              multiplier:1.0f
+//                              constant:0.0f]];
+//    
+//    //Height Constraint
+//    [self.view addConstraint:[NSLayoutConstraint
+//                              constraintWithItem:self.arsDefaultMenuView
+//                              attribute:NSLayoutAttributeHeight
+//                              relatedBy:NSLayoutRelationEqual
+//                              toItem:self.view
+//                              attribute:NSLayoutAttributeHeight
+//                              multiplier:0.15f
+//                              constant:0.0f]];
     
-    UIButton *publishButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width-110, 1, 100, 50)];
-    [publishButton setTitle:@"Publish" forState:UIControlStateNormal];
-    [publishButton addTarget:self action:@selector(loadLocation) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:publishButton];
+    //Layout the buttons inside the reader view
+    [self.arsDefaultMenuView layoutMenuItems];
 }
 
 - (void)_pUpdateBrushColor:(NSUInteger)hexValue {
@@ -154,12 +181,6 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
     const CGFloat *components = CGColorGetComponents(color);
     // Defer to the OpenGL view to set the brush color
 	[self.arsPaintingview setBrushColorWithRed:components[0] green:components[1] blue:components[2]];
-}
-
-// Called when receiving the "shake" notification; plays the erase sound and redraws the view
-- (void)eraseView
-{
-	[self.arsPaintingview erase];
 }
 
 #pragma mark - Event Handlers for the buttons
@@ -193,6 +214,39 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
     [self _pUpdateBrushColor:TBNBlueBrushColor];
 }
 
+- (void)_pPaintBucketButtonTouched:(UIButton *) button {
+    if ([self.arsDefaultMenuView isDescendantOfView:self.view])
+    {
+        [self.arsDefaultMenuView removeLayout];
+        [self.view removeConstraints:self.view.constraints];
+        [self.arsDefaultMenuView removeFromSuperview];
+    }
+    
+    if (![self.arsColorMenuView isDescendantOfView:self.view])
+    {
+        [self.view addSubview:self.arsColorMenuView];
+        [self _pLayoutColorMenuView];
+    }
+    
+    [self.arsColorMenuView setHidden:NO];
+}
+
+- (void)_pEraseButtonTouched:(UIButton *) button {
+    [self.arsPaintingview erase];
+}
+
+- (void)_pShareButtonTouched:(UIButton *) button {
+    [self loadLocation];
+}
+
+- (void)_pBackButtonTouched:(UIButton *) button {
+    [self.arsColorMenuView removeLayout];
+    [self.view removeConstraints:self.view.constraints];
+    [self.arsColorMenuView removeFromSuperview];
+    [self.view addSubview:self.arsDefaultMenuView];
+    [self _pLayoutDefaultMenuView];
+}
+
 #pragma mark - Location Specific Methids
 
 - (void) loadLocation
@@ -206,6 +260,12 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
 	CLLocation *lastLocation = [locations lastObject];
 	CLLocationAccuracy accuracy = [lastLocation horizontalAccuracy];
+    
+    [self.arsDefaultMenuView removeFromSuperview];
+    [self.arsColorMenuView removeFromSuperview];
+    [self.arsPaintingview removeFromSuperview];
+    [self.arsVideoView removeFromSuperview];
+    
 	NSLog(@"Received location %@ with accuracy %f", lastLocation, accuracy);
 	if(accuracy < 100.0) {
 		[manager stopUpdatingLocation];
