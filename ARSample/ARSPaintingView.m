@@ -59,6 +59,9 @@ typedef struct {
 	
 	EAGLContext *context;
 	
+    //Brush Texture Name
+    NSString *brushTextureName;
+    
 	// OpenGL names for the renderbuffer and framebuffers used to render to this view
 	GLuint viewRenderbuffer, viewFramebuffer;
     
@@ -100,6 +103,8 @@ typedef struct {
 - (id)initWithFrame:(CGRect)frame {
 	
     if ((self = [super initWithFrame:frame])) {
+        brushTextureName = @"ParticleTexture";
+        
 		CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
 		
 		eaglLayer.opaque = YES;
@@ -278,7 +283,7 @@ typedef struct {
     glGenBuffers(1, &vboId);
     
     // Load the brush texture
-    brushTexture = [self textureFromName:@"disc.png"];
+    brushTexture = [self textureFromName:brushTextureName];
     
     // Load shaders
     [self setupShaders];
@@ -286,11 +291,6 @@ typedef struct {
     // Enable blending and set a blending function appropriate for premultiplied alpha pixel data
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-    
-    // Playback recorded path, which is "Shake Me"
-    NSMutableArray* recordedPaths = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Recording" ofType:@"data"]];
-    if([recordedPaths count])
-        [self performSelector:@selector(playback:) withObject:recordedPaths afterDelay:0.2];
     
     return YES;
 }
@@ -425,25 +425,6 @@ typedef struct {
 	[context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
-// Reads previously recorded points and draws them onscreen. This is the Shake Me message that appears when the application launches.
-- (void)playback:(NSMutableArray*)recordedPaths
-{
-	NSData*				data = [recordedPaths objectAtIndex:0];
-	CGPoint*			point = (CGPoint*)[data bytes];
-	NSUInteger			count = [data length] / sizeof(CGPoint),
-						i;
-	
-	// Render the current path
-	for(i = 0; i < count - 1; ++i, ++point)
-		[self renderLineFromPoint:*point toPoint:*(point + 1)];
-	
-	// Render the next path after a short delay 
-	[recordedPaths removeObjectAtIndex:0];
-	if([recordedPaths count])
-		[self performSelector:@selector(playback:) withObject:recordedPaths afterDelay:0.01];
-}
-
-
 // Handles the start of a touch
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {   
@@ -509,6 +490,12 @@ typedef struct {
         glUseProgram(program[PROGRAM_POINT].id);
         glUniform4fv(program[PROGRAM_POINT].uniform[UNIFORM_VERTEX_COLOR], 1, brushColor);
     }
+}
+
+- (void)setBrushTextureWithTextureName:(NSString *)textureName
+{
+    brushTextureName = textureName;
+    [self textureFromName:brushTextureName];
 }
 
 @end

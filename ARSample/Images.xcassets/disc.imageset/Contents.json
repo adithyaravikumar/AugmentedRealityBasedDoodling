@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "arc.png"
+      "filename" : "discSmall.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "arc@2x.png"
+      "filename" : "discLarge.png"
     }
   ],
   "info" : {

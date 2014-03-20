@@ -35,8 +35,6 @@ const int kInfoViewTag = 1001;
 	[_arController setScaleViewsBasedOnDistance:YES];
 	[_arController setRotateViewsBasedOnPerspective:YES];
 	[_arController setDebugMode:NO];
-    
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

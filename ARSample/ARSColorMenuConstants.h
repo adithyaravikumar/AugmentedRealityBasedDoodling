@@ -17,7 +17,7 @@ extern NSString * const FingerBlueUpImageName;
 
 extern NSString* const BackButtonImageName;
 
-extern NSString *const TBNColorSelectionBorderImagename;
+extern NSString *const ColorSelectionBorderImagename;
 
 extern CGFloat const OrangeButtonWidthValue;
 

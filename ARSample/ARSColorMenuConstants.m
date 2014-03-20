@@ -26,7 +26,7 @@ NSString* const FingerBlueUpImageName = @"fingerBlue";
 NSString* const BackButtonImageName = @"back";
 
 //Color Border
-NSString *const TBNColorSelectionBorderImagename = @"colorSelectionBorder";
+NSString *const ColorSelectionBorderImagename = @"colorSelectionBorder";
 
 //Menu Item Width Constants
 CGFloat const OrangeButtonWidthValue = 15.0f;

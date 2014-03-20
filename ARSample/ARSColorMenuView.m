@@ -80,7 +80,7 @@
 - (void) _pSetBackgroundImagesForMenuItems
 {
     //COLOR SELECTION BORDER
-    [self.colorSelectionBorderView setImage:[UIImage imageNamed:TBNColorSelectionBorderImagename]];
+    [self.colorSelectionBorderView setImage:[UIImage imageNamed:ColorSelectionBorderImagename]];
     
     //ORANGE BUTTON
     [self.orangeBrushButton setBackgroundImage:[UIImage imageNamed:FingerOrangeUpImageName] forState:UIControlStateNormal];
