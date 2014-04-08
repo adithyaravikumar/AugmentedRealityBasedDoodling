@@ -7,5 +7,7 @@
 //
 
 @interface ARSVideoView : UIView
-
+- (void) setupVideo;
+- (void)stopSession;
+- (void)restartSession;
 @end

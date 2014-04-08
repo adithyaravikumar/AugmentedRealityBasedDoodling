@@ -16,6 +16,8 @@
 
 @implementation ARSVideoView
 
+AVCaptureDeviceInput *captureInput;
+
 - (instancetype) initWithFrame: (CGRect) frame
 {
     self = [super initWithFrame:frame];
@@ -61,6 +63,17 @@
     self.captureVideoPreviewLayer.frame = self.bounds;
     self.captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.layer addSublayer: self.captureVideoPreviewLayer];
+    [self.captureSession startRunning];
+}
+
+- (void)stopSession
+{
+    self.captureVideoPreviewLayer = nil;
+    [self.captureSession stopRunning];
+}
+
+- (void)restartSession
+{
     [self.captureSession startRunning];
 }
 

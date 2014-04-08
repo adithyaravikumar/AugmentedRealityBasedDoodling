@@ -33,6 +33,7 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
 @property (nonatomic, strong) ARSBrushMenuView *arsBrushMenuView;
 @property NSInteger colorSlideIndex;
 @property NSInteger brushSlideIndex;
+@property BOOL firstLoad;
 @end
 
 @implementation ARSViewController
@@ -58,17 +59,29 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
     [self _pUpdateBrushColor:TBNOrangeBrushColor];
     self.colorSlideIndex = 0;
     self.brushSlideIndex = 0;
-    
+    self.firstLoad = YES;
     [self.arsPaintingview setBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.view addSubview:self.arsVideoView];
+    
+    if (![self.arsVideoView isDescendantOfView:self.view])
+    {
+        [self.view addSubview:self.arsVideoView];
+    }
+    
     [self.view addSubview:self.arsPaintingview];
     [self.view addSubview:self.arsDefaultMenuView];
     [self.arsDefaultMenuView layoutMenuItems];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if (!self.firstLoad) {
+        [self.arsVideoView setupVideo];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -234,7 +247,7 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
 {
     [self setLocationManager:[[CLLocationManager alloc] init]];
 	[self.locationManager setDelegate:self];
-	[self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+	[self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
 	[self.locationManager startUpdatingLocation];
 }
 
@@ -245,11 +258,13 @@ NSUInteger const TBNBlueBrushColor = 0x3353a3;
     [self.arsDefaultMenuView removeFromSuperview];
     [self.arsColorMenuView removeFromSuperview];
     [self.arsPaintingview removeFromSuperview];
-    [self.arsVideoView removeFromSuperview];
+    
+    [self.arsVideoView stopSession];
     
 	NSLog(@"Received location %@ with accuracy %f", lastLocation, accuracy);
 	if(accuracy < 100.0) {
 		[manager stopUpdatingLocation];
+        self.firstLoad = NO;
         ARSFlipsideViewController *arsFlipsideViewController = [[ARSFlipsideViewController alloc] initWithLocation:lastLocation andDisplayView:self.arsPaintingview];
         [self.navigationController pushViewController:arsFlipsideViewController animated:YES];
 	}
